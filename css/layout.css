@@ -44,3 +44,7 @@ h1 {
   font-weight: lighter;
   color: white;
 }
+
+img {
+  width: 150px;
+}
