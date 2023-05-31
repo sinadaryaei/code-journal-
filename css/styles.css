@@ -10,7 +10,8 @@ label {
 
 input,
 textarea,
-button {
+button,
+p {
   font-family: "Open Sans", sans-serif;
   padding: 5px;
 }
@@ -98,4 +99,13 @@ ul {
 
 .image-entry {
   padding-bottom: 10px;
+}
+
+.title-entry {
+  padding: 0;
+  font-size: 30px;
+}
+
+.notes {
+  margin-top: 0;
 }
