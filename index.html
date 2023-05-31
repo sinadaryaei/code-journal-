@@ -37,27 +37,27 @@
         <div class="row">
           <div class="column-half">
             <div class="image">
-              <img class="placeholder" src="images/placeholder-image-square.jpg" alt="placeholder">
+              <img class="image" src="images/placeholder-image-square.jpg" alt="placeholder">
             </div>
           </div>
           <div class="column-half">
             <div class="title">
               <label for="title">Title</label>
             </div>
-            <input type="text" name="title" id="title">
+            <input type="text" name="title" id="title" required>
             <div class="url">
               <label for="url">Photo Url</label>
             </div>
-            <input type="url" name="url" id="url">
+            <input type="url" name="url" id="url" required>
           </div>
         </div>
         <div class="column-full">
           <div class="notes">
             <label for="notes">Notes</label>
           </div>
-          <textarea name="notes" id="notes" rows="10"></textarea>
+          <textarea name="notes" id="notes" rows="10" required></textarea>
           <div class="btn">
-            <button class="save" type="button">SAVE</button>
+            <button class="save" type="submit">SAVE</button>
           </div>
         </div>
       </form>
