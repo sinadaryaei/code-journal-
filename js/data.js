@@ -7,12 +7,12 @@ var data = {
   nextEntryId: 1
 };
 
-const $stringData = localStorage.getItem('data');
-if ($stringData) {
-  data = JSON.parse($stringData);
+const stringData = localStorage.getItem('data');
+if (stringData) {
+  data = JSON.parse(stringData);
 }
 
 window.addEventListener('beforeunload', event => {
-  const $stringData = JSON.stringify(data);
-  localStorage.setItem('data', $stringData);
+  const stringData = JSON.stringify(data);
+  localStorage.setItem('data', stringData);
 });
