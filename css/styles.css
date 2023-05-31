@@ -90,3 +90,12 @@ body {
   justify-content: flex-end;
   min-width: 100%;
 }
+
+ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.image-entry {
+  padding-bottom: 10px;
+}
