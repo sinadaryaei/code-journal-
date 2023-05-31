@@ -1,9 +1,18 @@
-body {
-  font-family: Helvetica, sans-serif;
-}
-
 header {
   background-color: #562b81;
+}
+
+h1,
+h2,
+label {
+  font-family: "Proza Libre", sans-serif;
+}
+
+input,
+textarea,
+button {
+  font-family: "Open Sans", sans-serif;
+  padding: 5px;
 }
 
 h1 {
