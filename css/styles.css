@@ -55,6 +55,11 @@ button:hover {
   color: #562b81;
 }
 
+button:active {
+  color: red;
+  box-shadow: 2px 2px 5px #562b81;
+}
+
 .background {
   position: absolute;
   top: 0;
