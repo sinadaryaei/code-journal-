@@ -1,0 +1,92 @@
+header {
+  background-color: #562b81;
+}
+
+h1,
+h2,
+label {
+  font-family: "Proza Libre", sans-serif;
+}
+
+input,
+textarea,
+button {
+  font-family: "Open Sans", sans-serif;
+  padding: 5px;
+}
+
+h1 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 25px;
+  font-weight: 600;
+  color: white;
+}
+
+.image {
+  object-fit: cover;
+  width: 100%;
+}
+
+label {
+  font-weight: bold;
+}
+
+input {
+  height: 40px;
+}
+
+input,
+textarea {
+  min-width: 100%;
+  border-color: #c7c7c7;
+  border-style: solid;
+  border-radius: 5px;
+}
+
+button {
+  font-size: large;
+  border-style: solid;
+  color: white;
+  background-color: #562b81;
+  border-color: #562b81;
+  border-radius: 5px;
+  padding: 10px;
+  width: 75px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+button:hover {
+  background-color: white;
+  border-style: solid;
+  border-color: #562b81;
+  color: #562b81;
+}
+
+button:active {
+  color: red;
+  box-shadow: 2px 2px 5px #562b81;
+}
+
+body {
+  background-color: #f0f0f0;
+}
+
+.title,
+.url,
+.notes {
+  padding: 0 0 10px;
+}
+
+.url,
+.notes {
+  padding-top: 10px;
+}
+
+.btn {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+  min-width: 100%;
+}
