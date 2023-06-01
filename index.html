@@ -32,8 +32,23 @@
     </div>
   </header>
   <main class="container">
+    <div class="row">
+      <div class="column-full nav-top entry-nav">
+        <nav>
+          <a id="view-entries" href="#">Entries</a>
+        </nav>
+        <div class="nav-top new-btn">
+          <a href="#" id="new-entry-button" class="button">NEW</a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column-full">
+        <h2 id="no-entries">No entries have been recorded.</h2>
+      </div>
+    </div>
     <div data-view="entry-form">
-      <form class="form">
+      <form class="form hidden">
         <div class="row">
           <div class="column-full">
             <h2>New Entry</h2>
@@ -67,8 +82,8 @@
         </div>
       </form>
     </div>
-    <div data-view="entries" class="hidden">
-      <h2>No entries have been recorded.</h2>
+    <div data-view="entries">
+      <ul id="entries-list"></ul>
     </div>
   </main>
   <script src="js/data.js"></script>

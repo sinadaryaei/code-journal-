@@ -21,10 +21,16 @@ $form.addEventListener('submit', event => {
   };
 
   data.nextEntryId++;
-
   data.entries.unshift(newObject);
+
+  const newEntry = renderEntry(newObject);
+  newEntry.prepend(entryList);
+
   $imgPreview.src = 'images/placeholder-image-square.jpg';
   $form.reset();
+
+  viewSwap('entries');
+  toggleNoEntries();
 });
 
 function renderEntry(entry) {
@@ -78,4 +84,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const entryElement = renderEntry(loopEntry);
     entryList.appendChild(entryElement);
   }
+});
+
+function toggleNoEntries() {
+  const noEntriesText = document.getElementById('#no-entries');
+  if (data.entries.length === 0) {
+    noEntriesText.classList.remove('hidden');
+  } else {
+    noEntriesText.classList.add('hidden');
+  }
+}
+
+function viewSwap(viewName) {
+  const entryformView = document.querySelector("[data-view='entry-form']");
+  const entriesView = document.querySelector("[data-view='entries']");
+
+  if (viewName === 'entry-form') {
+    entryformView.classList.remove('hidden');
+    entriesView.classList.add('hidden');
+  } else if (viewName === 'entries') {
+    entriesView.classList.remove('hidden');
+    entryformView.classList.add('hidden');
+  }
+  data.view = viewName;
+}
+
+const viewEntriesAnchor = document.querySelector('#view-entries');
+
+viewEntriesAnchor.addEventListener('click', function (event) {
+  event.preventDefault();
+  viewSwap('entries');
+});
+
+const newEntryButton = document.querySelector('#new-entry-button');
+
+newEntryButton.addEventListener('click', function (event) {
+  event.preventDefault();
+  viewSwap('entry-form');
 });

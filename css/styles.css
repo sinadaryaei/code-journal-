@@ -4,7 +4,8 @@ header {
 
 h1,
 h2,
-label {
+label,
+a {
   font-family: "Proza Libre", sans-serif;
 }
 
@@ -45,7 +46,8 @@ textarea {
   border-radius: 5px;
 }
 
-button {
+button,
+.button {
   font-size: large;
   border-style: solid;
   color: white;
@@ -55,19 +57,24 @@ button {
   padding: 10px;
   width: 75px;
   cursor: pointer;
-  transition: 0.5s;
+  transition: 0.35s;
 }
 
-button:hover {
+button:hover,
+.button:hover {
   background-color: white;
   border-style: solid;
   border-color: #562b81;
   color: #562b81;
 }
 
-button:active {
-  color: red;
-  box-shadow: 2px 2px 5px #562b81;
+button:active,
+.button:active {
+  color: white;
+  background-color: red;
+  box-shadow: 2px 2px 5px red;
+  border-color: red;
+  transition-duration: 0.25s;
 }
 
 body {
@@ -108,4 +115,33 @@ ul {
 
 .notes {
   margin-top: 0;
+}
+
+h2 {
+  text-align: center;
+  font-weight: 500;
+}
+
+a {
+  font-size: 30px;
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+}
+
+.nav-top {
+  padding-top: 20px;
+}
+
+.new-btn {
+  display: flex;
+  justify-content: flex-end;
+  width: 0 auto;
+}
+
+.entry-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
 }
