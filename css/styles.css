@@ -1,9 +1,10 @@
-header {
+.color-row {
   background-color: #562b81;
 }
 
 h1,
 h2,
+h3,
 label,
 a {
   font-family: "Proza Libre", sans-serif;
@@ -18,10 +19,7 @@ p {
 }
 
 h1 {
-  padding-top: 10px;
-  padding-bottom: 10px;
   font-size: 25px;
-  font-weight: 600;
   color: white;
 }
 
@@ -48,6 +46,8 @@ textarea {
 
 button,
 .button {
+  text-align: center;
+  border-width: medium;
   font-size: large;
   border-style: solid;
   color: white;
@@ -117,26 +117,13 @@ ul {
   margin-top: 0;
 }
 
-h2 {
+h3 {
   text-align: center;
   font-weight: 500;
 }
 
-a {
-  font-size: 30px;
-  text-decoration: none;
-  color: black;
-  font-weight: 600;
-}
-
 .nav-top {
   padding-top: 20px;
-}
-
-.new-btn {
-  display: flex;
-  justify-content: flex-end;
-  width: 0 auto;
 }
 
 .entry-nav {
@@ -144,4 +131,18 @@ a {
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
+}
+
+.entries-text {
+  color: white;
+  font-weight: lighter;
+  padding-left: 20px;
+}
+
+.clm-hlf {
+  width: auto;
+}
+
+a {
+  text-decoration: none;
 }

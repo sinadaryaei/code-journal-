@@ -24,7 +24,7 @@ $form.addEventListener('submit', event => {
   data.entries.unshift(newObject);
 
   const newEntry = renderEntry(newObject);
-  newEntry.prepend(entryList);
+  entryList.prepend(newEntry);
 
   $imgPreview.src = 'images/placeholder-image-square.jpg';
   $form.reset();
@@ -79,15 +79,18 @@ function renderEntry(entry) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  viewSwap(data.view);
+  toggleNoEntries();
   for (let i = 0; i < data.entries.length; i++) {
     const loopEntry = data.entries[i];
     const entryElement = renderEntry(loopEntry);
     entryList.appendChild(entryElement);
   }
+
 });
 
 function toggleNoEntries() {
-  const noEntriesText = document.getElementById('#no-entries');
+  const noEntriesText = document.getElementById('no-entries');
   if (data.entries.length === 0) {
     noEntriesText.classList.remove('hidden');
   } else {
