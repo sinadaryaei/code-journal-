@@ -5,6 +5,8 @@ const $title = document.getElementById('title');
 const $url = document.getElementById('url');
 const $notes = document.getElementById('notes');
 const entryList = document.querySelector('ul');
+const entryFormView = document.querySelector("[data-view='entry-form']");
+const entriesView = document.querySelector("[data-view='entries']");
 
 $imgInput.addEventListener('input', event => {
   $imgPreview.setAttribute('src', $imgInput.value);
@@ -99,15 +101,13 @@ function toggleNoEntries() {
 }
 
 function viewSwap(viewName) {
-  const entryformView = document.querySelector("[data-view='entry-form']");
-  const entriesView = document.querySelector("[data-view='entries']");
 
   if (viewName === 'entry-form') {
-    entryformView.classList.remove('hidden');
+    entryFormView.classList.remove('hidden');
     entriesView.classList.add('hidden');
   } else if (viewName === 'entries') {
     entriesView.classList.remove('hidden');
-    entryformView.classList.add('hidden');
+    entryFormView.classList.add('hidden');
   }
   data.view = viewName;
 }
@@ -115,13 +115,11 @@ function viewSwap(viewName) {
 const viewEntriesAnchor = document.querySelector('#view-entries');
 
 viewEntriesAnchor.addEventListener('click', function (event) {
-  event.preventDefault();
   viewSwap('entries');
 });
 
 const newEntryButton = document.querySelector('#new-entry-button');
 
 newEntryButton.addEventListener('click', function (event) {
-  event.preventDefault();
   viewSwap('entry-form');
 });
