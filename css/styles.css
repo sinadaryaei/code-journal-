@@ -4,22 +4,22 @@ header {
 
 h1,
 h2,
-label {
+h3,
+label,
+a {
   font-family: "Proza Libre", sans-serif;
 }
 
 input,
 textarea,
-button {
+button,
+p {
   font-family: "Open Sans", sans-serif;
   padding: 5px;
 }
 
 h1 {
-  padding-top: 10px;
-  padding-bottom: 10px;
   font-size: 25px;
-  font-weight: 600;
   color: white;
 }
 
@@ -44,7 +44,10 @@ textarea {
   border-radius: 5px;
 }
 
-button {
+button,
+.button {
+  text-align: center;
+  border-width: medium;
   font-size: large;
   border-style: solid;
   color: white;
@@ -54,19 +57,24 @@ button {
   padding: 10px;
   width: 75px;
   cursor: pointer;
-  transition: 0.5s;
+  transition: 0.35s;
 }
 
-button:hover {
+button:hover,
+.button:hover {
   background-color: white;
   border-style: solid;
   border-color: #562b81;
   color: #562b81;
 }
 
-button:active {
-  color: red;
-  box-shadow: 2px 2px 5px #562b81;
+button:active,
+.button:active {
+  color: white;
+  background-color: red;
+  box-shadow: 2px 2px 5px red;
+  border-color: red;
+  transition-duration: 0.25s;
 }
 
 body {
@@ -89,4 +97,52 @@ body {
   display: flex;
   justify-content: flex-end;
   min-width: 100%;
+}
+
+ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.image-entry {
+  padding-bottom: 10px;
+}
+
+.title-entry {
+  padding: 0;
+  font-size: 30px;
+}
+
+.notes {
+  margin-top: 0;
+}
+
+h3 {
+  text-align: center;
+  font-weight: 500;
+}
+
+.nav-top {
+  padding-top: 20px;
+}
+
+.entry-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.entries-text {
+  color: white;
+  font-weight: lighter;
+  padding-left: 20px;
+}
+
+.clm-hlf {
+  width: auto;
+}
+
+a {
+  text-decoration: none;
 }

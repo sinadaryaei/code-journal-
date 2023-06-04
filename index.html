@@ -25,9 +25,10 @@
   <header>
     <div class="container">
       <div class="row">
-        <div class="column-full">
+        <div class="column-half clm-hlf">
           <h1>Code Journal</h1>
         </div>
+        <a href="#" id="view-entries"><h2 class="entries-text">Entries</h2></a>
       </div>
     </div>
   </header>
@@ -67,7 +68,20 @@
         </div>
       </form>
     </div>
-    <div data-view="entries" class="hidden"></div>
+    <div data-view="entries" class="hidden">
+      <div class="row">
+        <div class="column-full nav-top entry-nav">
+          <a><h2>Entries</h2></a>
+          <div class="nav-top new-btn">
+            <a href="#" id="new-entry-button" class="button">NEW</a>
+          </div>
+        </div>
+      </div>
+      <div class="column-full">
+        <h3 id="no-entries">No entries have been recorded.</h3>
+      </div>
+      <ul id="entries-list"></ul>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
