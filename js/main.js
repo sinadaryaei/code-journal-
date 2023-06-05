@@ -68,6 +68,12 @@ function renderEntry(entry) {
   $p.className = 'notes';
   $p.textContent = entry.notes;
 
+  const $i = document.createElement('i');
+  $i.className = 'fa-solid fa-pencil';
+
+  $li.setAttribute('data-entry-id', entry.entryId);
+
+  $label.appendChild($i);
   $li.appendChild($divRow);
   $divRow.appendChild($divColumn1);
   $divColumn1.appendChild($divImage);
