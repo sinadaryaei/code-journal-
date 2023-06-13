@@ -34,6 +34,9 @@ $form.addEventListener('submit', event => {
 
     viewSwap('entries');
     toggleNoEntries();
+  } else if (data.editing !== null) {
+    newObject.entryId = data.editing.entryId;
+    data.entries[0] = newObject;
   }
 });
 
