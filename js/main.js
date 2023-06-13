@@ -4,7 +4,7 @@ const $form = document.querySelector('form');
 const $title = document.getElementById('title');
 const $url = document.getElementById('url');
 const $notes = document.getElementById('notes');
-const entryList = document.querySelector('ul');
+const $ul = document.querySelector('ul');
 const entryFormView = document.querySelector("[data-view='entry-form']");
 const entriesView = document.querySelector("[data-view='entries']");
 
@@ -27,7 +27,7 @@ $form.addEventListener('submit', event => {
     data.entries.unshift(newObject);
 
     const newEntry = renderEntry(newObject);
-    entryList.prepend(newEntry);
+    $ul.prepend(newEntry);
 
     $imgPreview.src = 'images/placeholder-image-square.jpg';
     $form.reset();
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
   for (let i = 0; i < data.entries.length; i++) {
     const loopEntry = data.entries[i];
     const entryElement = renderEntry(loopEntry);
-    entryList.appendChild(entryElement);
+    $ul.appendChild(entryElement);
   }
 
 });
@@ -132,7 +132,7 @@ newEntryButton.addEventListener('click', function (event) {
   viewSwap('entry-form');
 });
 
-entryList.addEventListener('click', function (event) {
+$ul.addEventListener('click', function (event) {
   if (event.target.matches('.fa-pencil')) {
     const entryId = event.target.closest('li').getAttribute('data-entry-id');
     const entry = data.entries.find(entry => entry.entryId === Number(entryId));
