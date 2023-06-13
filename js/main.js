@@ -22,17 +22,19 @@ $form.addEventListener('submit', event => {
     entryId: data.nextEntryId
   };
 
-  data.nextEntryId++;
-  data.entries.unshift(newObject);
+  if (data.editing === null) {
+    data.nextEntryId++;
+    data.entries.unshift(newObject);
 
-  const newEntry = renderEntry(newObject);
-  entryList.prepend(newEntry);
+    const newEntry = renderEntry(newObject);
+    entryList.prepend(newEntry);
 
-  $imgPreview.src = 'images/placeholder-image-square.jpg';
-  $form.reset();
+    $imgPreview.src = 'images/placeholder-image-square.jpg';
+    $form.reset();
 
-  viewSwap('entries');
-  toggleNoEntries();
+    viewSwap('entries');
+    toggleNoEntries();
+  }
 });
 
 function renderEntry(entry) {
@@ -128,4 +130,20 @@ const newEntryButton = document.querySelector('#new-entry-button');
 
 newEntryButton.addEventListener('click', function (event) {
   viewSwap('entry-form');
+});
+
+entryList.addEventListener('click', function (event) {
+  if (event.target.matches('.fa-pencil')) {
+    const entryId = event.target.closest('li').getAttribute('data-entry-id');
+    const entry = data.entries.find(entry => entry.entryId === Number(entryId));
+    if (entry) {
+      data.editing = entry;
+      $title.value = entry.title;
+      $url.value = entry.url;
+      $notes.value = entry.notes;
+      const formTitle = document.querySelector("[data-view='entry-form'] h2");
+      formTitle.textContent = 'Edit Entry';
+      viewSwap('entry-form');
+    }
+  }
 });
