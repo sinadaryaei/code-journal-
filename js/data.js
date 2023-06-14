@@ -4,8 +4,7 @@ var data = {
   view: 'entry-form',
   entries: [],
   editing: null,
-  nextEntryId: 1,
-  clickEntry: {}
+  nextEntryId: 1
 };
 
 const stringData = localStorage.getItem('data');

@@ -46,7 +46,7 @@ $form.addEventListener('submit', event => {
 
         formTitle.textContent = 'New Entry';
         data.editing = null;
-        break;
+        $form.reset();
       }
     }
   }
