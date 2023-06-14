@@ -146,7 +146,9 @@ viewEntriesAnchor.addEventListener('click', function (event) {
 const newEntryButton = document.querySelector('#new-entry-button');
 
 newEntryButton.addEventListener('click', function (event) {
+  $form.reset();
   viewSwap('entry-form');
+  data.editing = null;
 });
 
 $ul.addEventListener('click', function (event) {
