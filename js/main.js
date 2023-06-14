@@ -8,6 +8,7 @@ const $ul = document.querySelector('ul');
 const entryFormView = document.querySelector("[data-view='entry-form']");
 const entriesView = document.querySelector("[data-view='entries']");
 const formTitle = document.querySelector("[data-view='entry-form'] h2");
+const viewEntriesAnchor = document.querySelector('#view-entries');
 
 $imgInput.addEventListener('input', event => {
   $imgPreview.setAttribute('src', $imgInput.value);
@@ -135,8 +136,6 @@ function viewSwap(viewName) {
   }
   data.view = viewName;
 }
-
-const viewEntriesAnchor = document.querySelector('#view-entries');
 
 viewEntriesAnchor.addEventListener('click', function (event) {
   viewSwap('entries');
