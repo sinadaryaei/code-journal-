@@ -139,8 +139,10 @@ function viewSwap(viewName) {
 
 viewEntriesAnchor.addEventListener('click', function (event) {
   viewSwap('entries');
+  $form.reset();
+  formTitle.textContent = 'New Entry';
+  data.editing = null;
 });
-
 const newEntryButton = document.querySelector('#new-entry-button');
 
 newEntryButton.addEventListener('click', function (event) {
