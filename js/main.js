@@ -7,6 +7,7 @@ const $notes = document.getElementById('notes');
 const $ul = document.querySelector('ul');
 const entryFormView = document.querySelector("[data-view='entry-form']");
 const entriesView = document.querySelector("[data-view='entries']");
+const formTitle = document.querySelector("[data-view='entry-form'] h2");
 
 $imgInput.addEventListener('input', event => {
   $imgPreview.setAttribute('src', $imgInput.value);
@@ -18,11 +19,11 @@ $form.addEventListener('submit', event => {
   const newObject = {
     title: $title.value,
     url: $url.value,
-    notes: $notes.value,
-    entryId: data.nextEntryId
+    notes: $notes.value
   };
 
   if (data.editing === null) {
+    newObject.entryId = data.nextEntryId;
     data.nextEntryId++;
     data.entries.unshift(newObject);
 
@@ -32,18 +33,32 @@ $form.addEventListener('submit', event => {
     $imgPreview.src = 'images/placeholder-image-square.jpg';
     $form.reset();
 
-    viewSwap('entries');
-    toggleNoEntries();
   } else if (data.editing !== null) {
     newObject.entryId = data.editing.entryId;
-    data.entries[0] = newObject;
+    for (let i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryId === newObject.entryId) {
+        data.entries[i] = newObject;
+
+        const newLI = renderEntry(newObject);
+        const oldLI = $ul.querySelector(`[data-entry-id='${newObject.entryId}']`);
+        $ul.replaceChild(newLI, oldLI);
+
+        formTitle.textContent = 'New Entry';
+        data.editing = null;
+        break;
+      }
+    }
   }
+
+  viewSwap('entries');
+  toggleNoEntries();
 });
 
 function renderEntry(entry) {
 
   const $li = document.createElement('li');
   $li.className = 'entry';
+  $li.setAttribute('data-entry-id', entry.entryId);
 
   const $divRow = document.createElement('div');
   $divRow.className = 'row';
@@ -75,8 +90,6 @@ function renderEntry(entry) {
 
   const $i = document.createElement('i');
   $i.className = 'fa-solid fa-pencil';
-
-  $li.setAttribute('data-entry-id', entry.entryId);
 
   $label.appendChild($i);
   $li.appendChild($divRow);
@@ -144,7 +157,6 @@ $ul.addEventListener('click', function (event) {
       $title.value = entry.title;
       $url.value = entry.url;
       $notes.value = entry.notes;
-      const formTitle = document.querySelector("[data-view='entry-form'] h2");
       formTitle.textContent = 'Edit Entry';
       viewSwap('entry-form');
     }
