@@ -9,6 +9,8 @@ const entryFormView = document.querySelector("[data-view='entry-form']");
 const entriesView = document.querySelector("[data-view='entries']");
 const formTitle = document.querySelector("[data-view='entry-form'] h2");
 const viewEntriesAnchor = document.querySelector('#view-entries');
+const $deleteButton = document.getElementById('delete-button');
+$deleteButton.style.display = 'none';
 
 $imgInput.addEventListener('input', event => {
   $imgPreview.setAttribute('src', $imgInput.value);
@@ -162,6 +164,7 @@ $ul.addEventListener('click', function (event) {
       $notes.value = entry.notes;
       formTitle.textContent = 'Edit Entry';
       viewSwap('entry-form');
+      $deleteButton.style.display = 'block';
     }
   }
 });

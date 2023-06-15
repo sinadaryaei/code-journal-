@@ -50,20 +50,21 @@
             <div class="title">
               <label for="title">Title</label>
             </div>
-            <input type="text" name="title" id="title" required>
+            <input class="border-color" type="text" name="title" id="title" required>
             <div class="url">
               <label for="url">Photo Url</label>
             </div>
-            <input type="url" name="url" id="url" required>
+            <input class="border-color" type="url" name="url" id="url" required>
           </div>
         </div>
         <div class="column-full">
           <div class="notes">
             <label for="notes">Notes</label>
           </div>
-          <textarea name="notes" id="notes" rows="10" required></textarea>
+          <textarea class="border-color" name="notes" id="notes" rows="10" required></textarea>
           <div class="btn">
-            <button class="save" type="submit">SAVE</button>
+            <button id="delete-button" class="button-delete" type="submit">Delete Entry</button>
+            <button class="button-save" type="submit">SAVE</button>
           </div>
         </div>
       </form>
@@ -73,7 +74,7 @@
         <div class="column-full nav-top entry-nav">
           <a><h2>Entries</h2></a>
           <div class="nav-top new-btn">
-            <a href="#" id="new-entry-button" class="button">NEW</a>
+            <a href="#" id="new-entry-button" class="button-new">NEW</a>
           </div>
         </div>
       </div>

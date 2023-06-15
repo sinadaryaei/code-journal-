@@ -36,16 +36,15 @@ input {
   height: 40px;
 }
 
-input,
-textarea {
+.border-color {
   min-width: 100%;
   border-color: #c7c7c7;
   border-style: solid;
   border-radius: 5px;
 }
 
-button,
-.button {
+.button-save,
+.button-new {
   text-align: center;
   border-width: medium;
   font-size: large;
@@ -55,21 +54,20 @@ button,
   border-color: #562b81;
   border-radius: 5px;
   padding: 10px;
-  width: 75px;
   cursor: pointer;
   transition: 0.35s;
 }
 
-button:hover,
-.button:hover {
+.button-save:hover,
+.button-new:hover {
   background-color: white;
   border-style: solid;
   border-color: #562b81;
   color: #562b81;
 }
 
-button:active,
-.button:active {
+.button-save:active,
+.button-new:active {
   color: white;
   background-color: red;
   box-shadow: 2px 2px 5px red;
@@ -95,7 +93,7 @@ body {
 .btn {
   margin-top: 30px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   min-width: 100%;
 }
 
@@ -178,4 +176,16 @@ i.fa-pencil:active {
   100% {
     transform: translateY(0);
   }
+}
+
+.button-delete {
+  background-color: none;
+  border-style: none;
+  text-decoration: underline;
+  font-size: large;
+  color: #dc2626;
+}
+
+.button-delete:hover {
+  cursor: pointer;
 }
