@@ -57,14 +57,20 @@
             <input class="border-color" type="url" name="url" id="url" required>
           </div>
         </div>
-        <div class="column-full">
-          <div class="notes">
-            <label for="notes">Notes</label>
-          </div>
-          <textarea class="border-color" name="notes" id="notes" rows="10" required></textarea>
-          <div class="btn">
-            <button id="delete-button" class="button-delete" type="submit">Delete Entry</button>
-            <button class="button-save" type="submit">SAVE</button>
+        <div class="row">
+          <div class="column-full">
+            <div class="notes">
+              <label for="notes">Notes</label>
+            </div>
+            <textarea class="border-color" name="notes" id="notes" rows="10" required></textarea>
+            <div class="row">
+              <div class="column-half edit-delete-save">
+                <button id="delete-button" class="button-delete" type="submit">Delete Entry</button>
+              </div>
+              <div class="column-half new-save">
+                <button class="button-save" type="submit">SAVE</button>
+              </div>
+            </div>
           </div>
         </div>
       </form>
@@ -84,6 +90,19 @@
       <ul id="entries-list"></ul>
     </div>
   </main>
+  <div class="row">
+    <div class="column-full">
+      <div id="confirmation-modal" class="modal hidden">
+        <div class="modal-content">
+          <p>Are you sure you want to delete this entry?</p>
+          <div class="confirm-cancel">
+            <button id="cancel-delete">Cancel</button>
+            <button id="confirm-delete">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>

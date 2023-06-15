@@ -151,6 +151,7 @@ newEntryButton.addEventListener('click', function (event) {
   $form.reset();
   viewSwap('entry-form');
   data.editing = null;
+  $deleteButton.style.display = 'none';
 });
 
 $ul.addEventListener('click', function (event) {
@@ -167,4 +168,19 @@ $ul.addEventListener('click', function (event) {
       $deleteButton.style.display = 'block';
     }
   }
+});
+
+$deleteButton.addEventListener('click', function (event) {
+  event.preventDefault();
+
+  const modal = document.getElementById('confirmation-modal');
+  modal.classList.remove('hidden');
+});
+
+document.getElementById('confirm-delete').addEventListener('click', function () {
+  document.getElementById('confirmation-modal').classList.add('hidden');
+});
+
+document.getElementById('cancel-delete').addEventListener('click', function () {
+  document.getElementById('confirmation-modal').classList.add('hidden');
 });
