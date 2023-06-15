@@ -146,3 +146,36 @@ h3 {
 a {
   text-decoration: none;
 }
+
+label,
+i.fa-pencil {
+  display: flex;
+  justify-content: space-between;
+}
+
+i.fa-pencil {
+  color: #562b81;
+  cursor: pointer;
+}
+
+i.fa-pencil:hover {
+  animation: bounce 0.5s;
+}
+
+i.fa-pencil:active {
+  color: red;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}

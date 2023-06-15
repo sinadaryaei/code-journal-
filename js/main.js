@@ -4,9 +4,11 @@ const $form = document.querySelector('form');
 const $title = document.getElementById('title');
 const $url = document.getElementById('url');
 const $notes = document.getElementById('notes');
-const entryList = document.querySelector('ul');
+const $ul = document.querySelector('ul');
 const entryFormView = document.querySelector("[data-view='entry-form']");
 const entriesView = document.querySelector("[data-view='entries']");
+const formTitle = document.querySelector("[data-view='entry-form'] h2");
+const viewEntriesAnchor = document.querySelector('#view-entries');
 
 $imgInput.addEventListener('input', event => {
   $imgPreview.setAttribute('src', $imgInput.value);
@@ -18,18 +20,36 @@ $form.addEventListener('submit', event => {
   const newObject = {
     title: $title.value,
     url: $url.value,
-    notes: $notes.value,
-    entryId: data.nextEntryId
+    notes: $notes.value
   };
 
-  data.nextEntryId++;
-  data.entries.unshift(newObject);
+  if (data.editing === null) {
+    newObject.entryId = data.nextEntryId;
+    data.nextEntryId++;
+    data.entries.unshift(newObject);
 
-  const newEntry = renderEntry(newObject);
-  entryList.prepend(newEntry);
+    const newEntry = renderEntry(newObject);
+    $ul.prepend(newEntry);
 
-  $imgPreview.src = 'images/placeholder-image-square.jpg';
-  $form.reset();
+    $imgPreview.src = 'images/placeholder-image-square.jpg';
+    $form.reset();
+
+  } else if (data.editing !== null) {
+    newObject.entryId = data.editing.entryId;
+    for (let i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryId === newObject.entryId) {
+        data.entries[i] = newObject;
+
+        const newLI = renderEntry(newObject);
+        const oldLI = $ul.querySelector(`[data-entry-id='${newObject.entryId}']`);
+        $ul.replaceChild(newLI, oldLI);
+
+        formTitle.textContent = 'New Entry';
+        data.editing = null;
+        $form.reset();
+      }
+    }
+  }
 
   viewSwap('entries');
   toggleNoEntries();
@@ -39,6 +59,7 @@ function renderEntry(entry) {
 
   const $li = document.createElement('li');
   $li.className = 'entry';
+  $li.setAttribute('data-entry-id', entry.entryId);
 
   const $divRow = document.createElement('div');
   $divRow.className = 'row';
@@ -68,6 +89,10 @@ function renderEntry(entry) {
   $p.className = 'notes';
   $p.textContent = entry.notes;
 
+  const $i = document.createElement('i');
+  $i.className = 'fa-solid fa-pencil';
+
+  $label.appendChild($i);
   $li.appendChild($divRow);
   $divRow.appendChild($divColumn1);
   $divColumn1.appendChild($divImage);
@@ -86,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
   for (let i = 0; i < data.entries.length; i++) {
     const loopEntry = data.entries[i];
     const entryElement = renderEntry(loopEntry);
-    entryList.appendChild(entryElement);
+    $ul.appendChild(entryElement);
   }
 
 });
@@ -112,14 +137,31 @@ function viewSwap(viewName) {
   data.view = viewName;
 }
 
-const viewEntriesAnchor = document.querySelector('#view-entries');
-
 viewEntriesAnchor.addEventListener('click', function (event) {
   viewSwap('entries');
+  $form.reset();
+  formTitle.textContent = 'New Entry';
+  data.editing = null;
 });
-
 const newEntryButton = document.querySelector('#new-entry-button');
 
 newEntryButton.addEventListener('click', function (event) {
+  $form.reset();
   viewSwap('entry-form');
+  data.editing = null;
+});
+
+$ul.addEventListener('click', function (event) {
+  if (event.target.matches('.fa-pencil')) {
+    const entryId = event.target.closest('li').getAttribute('data-entry-id');
+    const entry = data.entries.find(entry => entry.entryId === Number(entryId));
+    if (entry) {
+      data.editing = entry;
+      $title.value = entry.title;
+      $url.value = entry.url;
+      $notes.value = entry.notes;
+      formTitle.textContent = 'Edit Entry';
+      viewSwap('entry-form');
+    }
+  }
 });
