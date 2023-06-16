@@ -152,6 +152,7 @@ newEntryButton.addEventListener('click', function (event) {
   viewSwap('entry-form');
   data.editing = null;
   $deleteButton.style.display = 'none';
+  $imgPreview.src = 'images/placeholder-image-square.jpg';
 });
 
 $ul.addEventListener('click', function (event) {
@@ -163,6 +164,7 @@ $ul.addEventListener('click', function (event) {
       $title.value = entry.title;
       $url.value = entry.url;
       $notes.value = entry.notes;
+      $imgPreview.src = entry.url;
       formTitle.textContent = 'Edit Entry';
       viewSwap('entry-form');
       $deleteButton.style.display = 'block';
@@ -177,10 +179,25 @@ $deleteButton.addEventListener('click', function (event) {
   modal.classList.remove('hidden');
 });
 
-document.getElementById('confirm-delete').addEventListener('click', function () {
+document.getElementById('cancel-delete').addEventListener('click', function () {
   document.getElementById('confirmation-modal').classList.add('hidden');
 });
 
-document.getElementById('cancel-delete').addEventListener('click', function () {
+document.getElementById('confirm-delete').addEventListener('click', function () {
   document.getElementById('confirmation-modal').classList.add('hidden');
+
+  if (data.editing !== null) {
+    const index = data.entries.findIndex(entry => entry.entryId === data.editing.entryId);
+
+    if (index !== -1) {
+      data.entries.splice(index, 1);
+    }
+    const oldLI = $ul.querySelector(`[data-entry-id='${data.editing.entryId}']`);
+    if (oldLI) {
+      $ul.removeChild(oldLI);
+    }
+    data.editing = null;
+  }
+  toggleNoEntries();
+  viewSwap('entries');
 });

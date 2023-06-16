@@ -219,20 +219,40 @@ i.fa-pencil:active {
 #cancel-delete,
 #confirm-delete {
   font-size: medium;
-  padding: 8px;
   border-radius: 5px;
   text-transform: uppercase;
-  font-weight: bold;
-  border: none;
+  border: transparent;
+  cursor: pointer;
 }
 
 #cancel-delete {
   background-color: #b6b6b6;
 }
 
+#cancel-delete:hover {
+  color: white;
+  border: solid 0 white;
+}
+
+#cancel-delete:active {
+  color: black;
+}
+
 #confirm-delete {
   background-color: #dc2626;
   color: white;
+}
+
+#confirm-delete:hover {
+  color: #dc2626;
+  background-color: white;
+  border: solid 0 #dc2626;
+}
+
+#confirm-delete:active {
+  background-color: #dc2626;
+  color: white;
+  border: solid 0 #dc2626;
 }
 
 .btn-save {
