@@ -1,5 +1,5 @@
-const $imgInput = document.getElementById('url');
 const $imgPreview = document.querySelector('img');
+const $imgInput = document.getElementById('url');
 const $form = document.querySelector('form');
 const $title = document.getElementById('title');
 const $url = document.getElementById('url');
